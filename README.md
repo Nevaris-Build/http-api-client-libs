@@ -1,11 +1,20 @@
 # http-api-client-libs für NEVARIS Build 2026.1
 
-## Nevaris.Build.ClientApi 6.1.0
+## Nevaris.Build.ClientApi 6.2.0
 
 Diese .NET-Bibliothek ermöglicht einen typsicheren Zugriff auf die RESTful API
 von NEVARIS Build 2026.1 Sie ist auch als [nuget-Paket](https://www.nuget.org/packages/Nevaris.Build.ClientApi/) verfügbar.
 
 ## Neuerungen und Breaking Changes ##
+
+### 6.2.0 (für Build 2026.1-3 – 26.1.26195.898) – _20.07.2026_
+
+- Zugriff auf globale Projekte:
+  - _IStammApi.GetGlobaleProjekte_: Liefert alle globalen Projekte
+  - _IStammApi.GetGlobalesProjekt_: Liefert ein einzelnes globales Projekte, einschließlich Projektbeteiligte
+  - _IStammApi.CreateGlobalesProjekt_: Erzeugt ein globales Projekt
+  - _IStammApi.UpdateGlobalesProjekt_: Aktualisiert ein globales Projekt
+  - _IStammApi.DeleteGlobalesProjekt_: Löscht ein globales Projekt
 
 ### 6.1.0 (für Build 2026.1-1 – 26.1.26148.502) – _28.05.2026_
 

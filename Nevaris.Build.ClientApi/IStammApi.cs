@@ -61,6 +61,49 @@ public interface IStammApi
     Task DeleteAdresse(string code);
 
     /// <summary>
+    /// Liefert alle globalen Projekte.
+    /// </summary>
+    /// <response code="200">Liste von globalen Projekten (ohne Detailinfos wie Projektbeteiligte)</response>
+    [Get("/build/global/projekte")]
+    Task<List<GlobalesProjekt>> GetGlobaleProjekte();
+
+    /// <summary>
+    /// Liefert das globale Projekt mit dem angegebenen Code.
+    /// </summary>
+    /// <param name="code">Projektcode</param>
+    /// <response code="200">Globales Projekt</response>
+    /// <response code="404">Globales Projekt nicht vorhanden</response>
+    [Get("/build/global/projekte/{code}")]
+    Task<GlobalesProjekt> GetGlobalesProjekt(string code);
+
+    /// <summary>
+    /// Erstellt ein neues globales Projekt.
+    /// </summary>
+    /// <param name="globalesProjekt">Neu anzulegendes globales Projekt</param>
+    /// <response code="201">Neu erzeugtes globales Projekt</response>
+    [Post("/build/global/projekte")]
+    Task<GlobalesProjekt> CreateGlobalesProjekt([Body] GlobalesProjekt globalesProjekt);
+
+    /// <summary>
+    /// Aktualisiert ein globales Projekt.
+    /// </summary>
+    /// <param name="code">Projektcode</param>
+    /// <param name="globalesProjekt">Globales Projekt mit den neuen Werten</param>
+    /// <response code="204">OK</response>
+    /// <response code="404">Globales Projekt nicht vorhanden</response>
+    [Put("/build/global/projekte/{code}")]
+    Task UpdateGlobalesProjekt(string code, [Body] GlobalesProjekt globalesProjekt);
+
+    /// <summary>
+    /// Löscht das globale Projekt mit dem angegebenen Code.
+    /// </summary>
+    /// <param name="code">Projektcode</param>
+    /// <response code="204">OK</response>
+    /// <response code="404">Globales Projekt nicht vorhanden</response>
+    [Delete("/build/global/projekte/{code}")]
+    Task DeleteGlobalesProjekt(string code);
+
+    /// <summary>
     /// Liefert die Projekte eines Datenbank-Speicherorts als <see cref="DbProjekt"/>-Objekte.
     /// </summary>
     /// <remarks>Dieser Endpunkt unterstützt nur Datenbank-Speicherorte (SQL Server). Die Verwendung mit einem
@@ -449,7 +492,6 @@ public interface IStammApi
     /// <param name="ftNr">optional die Folgetext Nummer</param>
     [Get("/build/global/lbpositionen")]
     Task<LbPosition> GetLbPosition(Guid katalogId, string lgNr, string ugNr, string gtNr, string? ftNr = null);
-
 
     /// <summary>
     /// Importiere Leistungsbeschreibung mit den übergebenen Daten.

@@ -22,7 +22,7 @@ try
     }
 
     // Auslesen der Mandanten
-    var mandanten = await client.StammApi.GetMandaten();
+    var mandanten = await client.StammApi.GetMandanten();
 
     foreach (var mandant in mandanten)
     {

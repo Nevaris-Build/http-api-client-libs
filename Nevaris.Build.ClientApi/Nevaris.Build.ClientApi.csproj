@@ -2,21 +2,21 @@
 
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
-    <PackageProjectUrl>https://github.com/NEVARISBausoftwareGmbH/http-api-client-libs</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/NEVARISBausoftwareGmbH/http-api-client-libs</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Nevaris-Build/http-api-client-libs</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Nevaris-Build/http-api-client-libs</RepositoryUrl>
     <PackageTags>Nevaris</PackageTags>
     <Description>A client library for accessing Nevaris Build via its RESTful API</Description>
     <Authors>Nevaris Bausoftware GmbH</Authors>
     <Company>Nevaris Bausoftware GmbH</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>6.1.0</Version>
+    <Version>6.2.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Title>Nevaris.Build.ClientApi</Title>
     <Copyright>NEVARIS Bausoftware GmbH</Copyright>
-    <PackageReleaseNotes>ClientApi-Library für Build 2026.1-1 (Erweiterung in PasteToLvOptionen)</PackageReleaseNotes>
-    <PackageVersion>6.1.0</PackageVersion>
-    <AssemblyVersion>6.1.0</AssemblyVersion>
-    <FileVersion>6.1.0</FileVersion>
+    <PackageReleaseNotes>ClientApi-Library für Build 2026.1-3 (Zugriff auf globale Projekte)</PackageReleaseNotes>
+    <PackageVersion>6.2.0</PackageVersion>
+    <AssemblyVersion>6.2.0</AssemblyVersion>
+    <FileVersion>6.2.0</FileVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>keyPair.snk</AssemblyOriginatorKeyFile>
     <TargetFrameworks>netstandard2.1;net48</TargetFrameworks>
@@ -38,10 +38,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Duende.IdentityModel" Version="8.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageReference Include="Refit" Version="10.1.6" />
     <PackageReference Include="Refit.Newtonsoft.Json" Version="10.1.6" />
-    <PackageReference Include="IdentityModel" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="10.0.7" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.17.0" />
   </ItemGroup>

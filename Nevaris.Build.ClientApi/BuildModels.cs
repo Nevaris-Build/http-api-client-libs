@@ -1382,6 +1382,199 @@ public class ProjektZugeordneteAdresse : BaseObject
 
 #endregion Projekte
 
+#region Globale Projekte
+
+/// <summary>
+/// Ein globales Projekt (= Inform-Projekt). Die zugehörigen Endpunkte befinden sich an /build/global/projekte.
+/// </summary>
+public class GlobalesProjekt : BaseObject
+{
+    /// <summary>
+    /// Schlüsselfeld. Kann bei Neuanlage befüllt werden oder leer bleiben (dann wird ein Wert automatisch zugewiesen).
+    /// </summary>
+    public string? Code { get; set; }
+
+    /// <summary>
+    /// Nummer des globalen Projekts
+    /// </summary>
+    public string? Nummer { get; set; }
+
+    public string? Suchbegriff { get; set; }
+
+    public string? Bezeichnung { get; set; }
+
+    /// <summary>
+    /// Falls der Ausführungsort auf eine Adresse in den Stammdaten verweist, ist dies der Code der Adresse.
+    /// </summary>
+    public string? AusführungsortAdresseCode { get; set; }
+
+    public string? AusführungsortLand { get; set; }
+
+    public string? AusführungsortPlz { get; set; }
+
+    public string? AusführungsortOrt { get; set; }
+
+    public string? AusführungsortStraße { get; set; }
+
+    public string? ProjektStatus { get; set; }
+
+    [JsonProperty]
+    public decimal? HauptauftragssummeNetto { get; internal init; }
+
+    [JsonProperty]
+    public decimal? GenehmigteNachträgeNetto { get; internal init; }
+
+    [JsonProperty]
+    public decimal? AuftragssummeNetto { get; internal init; }
+
+    public bool NebenangeboteZulässig { get; set; }
+
+    public bool IstReferenzprojekt { get; set; }
+
+    [JsonProperty]
+    public bool Aktiv { get; internal init; } = true;
+
+    public string? Mandant { get; set; }
+
+    public string? Niederlassung { get; set; }
+
+    public string? Kostenstelle { get; set; }
+
+    /// <summary>
+    /// Der Adresscode des Verantwortlichen.
+    /// </summary>
+    public string? VerantwortlicherAdresseCode { get; set; }
+
+    /// <summary>
+    /// Verantwortlicher: Der Code des Adressaten. Kann nur in Kombination mit <see cref="VerantwortlicherAdresseCode"/>
+    /// genutzt werden. 
+    /// </summary>
+    public string? VerantwortlicherAdressatCode { get; set; }
+
+    public string? Sparte { get; set; }
+
+    public string? Projektgruppe { get; set; }
+
+    public string? Abnahmeart { get; set; }
+
+    public string? Vertragsart { get; set; }
+
+    public string? Vergabeart { get; set; }
+
+    public string? Projektart { get; set; }
+
+    public string? Projekttyp { get; set; }
+
+    public DateTime? Beginn { get; set; }
+
+    public DateTime? Ende { get; set; }
+
+    public DateTime? Baubeginn { get; set; }
+
+    public DateTime? Bauende { get; set; }
+
+    public string? Beschreibung { get; set; }
+
+    public string? Notiz { get; set; }
+
+    public string? Bearbeitungshinweis { get; set; }
+
+    public string? Url { get; set; }
+
+    public string? KameraUrl { get; set; }
+
+    public GeoCoordinate? GeoKoordinaten { get; set; }
+
+    public bool SubmissionEigenesAngebotIst100Prozent { get; set; }
+
+    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+    public Submissionsergebnis? Submissionsergebnis { get; set; }
+
+    public string? SubmissionsergebnisBegründung { get; set; }
+
+    public string? SubmissionsergebnisNotiz { get; set; }
+
+    /// <summary>
+    /// Die ID des Build-Projekts (falls zugeordnet) im API-Format, d.h. "[Speicherort-Guid].[Projekt-Guid]".
+    /// </summary>
+    [JsonProperty]
+    public string? BuildProjektId { get; internal init; }
+
+    /// <summary>
+    /// (Detailinfo) Liste von Projektbeteiligten
+    /// </summary>
+    public List<Projektbeteiligter>? Projektbeteiligte { get; set; }
+
+    /// <summary>
+    /// (Detailinfo) Die Individualeigenschaften, die dieser Adresse zugeordnet sind
+    /// </summary>
+    public Dictionary<string, CustomPropertyValue?>? CustomPropertyValues { get; set; }
+}
+
+/// <summary>
+/// Ein Projektbeteiligter eines globalen Projekts
+/// </summary>
+public class Projektbeteiligter : BaseObject
+{
+    /// <summary>
+    /// Schlüsselfeld. Kann bei Neuanlage befüllt werden oder leer bleiben (dann wird ein Wert automatisch zugewiesen).
+    /// </summary>
+    public Guid? Id { get; init; }
+
+    public string? Adressrolle { get; set; }
+
+    public string? AdresseCode { get; set; }
+
+    public string? AdressatCode { get; set; }
+
+    public bool Inaktiv { get; set; }
+
+    public string? Beschreibung { get; set; }
+
+    public string? Notiz { get; set; }
+
+    /// <summary>
+    /// Detailinfo: Die zugeordneten Branchen
+    /// </summary>
+    public List<ProjektbeteiligterBranche>? Branchen { get; set; }
+
+    /// <summary>
+    /// Detailinfo: Die zugeordneten Gewerke
+    /// </summary>
+    public List<ProjektbeteiligterGewerk>? Gewerke { get; set; }
+}
+
+/// <summary>
+/// Eine Branche, die einem <see cref="Projektbeteiligter"/>-Objekt zugeordnet ist.
+/// </summary>
+public class ProjektbeteiligterBranche : BaseObject
+{
+    public required string BrancheCode { get; init; }
+
+    public string? Beschreibung { get; set; }
+}
+
+/// <summary>
+/// Ein Gewerk, das einem <see cref="Projektbeteiligter"/>-Objekt zugeordnet ist.
+/// </summary>
+public class ProjektbeteiligterGewerk : BaseObject
+{
+    public required string GewerkCode { get; init; }
+
+    public string? Beschreibung { get; set; }
+
+    public string? Notiz { get; set; }
+}
+
+public enum Submissionsergebnis
+{
+    Offen,
+    Gewonnen,
+    Verloren
+}
+
+#endregion Globale Projekte
+
 #region Betriebsmittel
 
 /// <summary>
@@ -2536,7 +2729,7 @@ public enum FremdsystemArt
     //OEBSL = 11000,
     //EAN = 12000,
     //SAP = 13000,
-    //NevarisRegieArtikel = 14000,
+    NevarisRegieArtikel = 14000,
     //NevarisFinanceArtikel = 15000,
 }
 
